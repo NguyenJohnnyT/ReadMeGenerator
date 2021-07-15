@@ -1,0 +1,23 @@
+{
+  "name": "ReadMeGenerator",
+  "version": "1.0.0",
+  "description": "The developer can save more time building a readme for their projects by using this generator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NguyenJohnnyT/ReadMeGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NguyenJohnnyT/ReadMeGenerator/issues"
+  },
+  "homepage": "https://github.com/NguyenJohnnyT/ReadMeGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  }
+}
