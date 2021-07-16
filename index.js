@@ -10,7 +10,7 @@ const questions = [
     'What is your github username?', //3
     'What is the link to the deployed website?', //4
     'How would you instruct the user to use this application?', //5
-    'Who contributed to this project?', //6
+    'Guildelines for contributors?', //6
     'Any tests to include for the user?', //7
     'Enter an email for contact.' //8
     //Choice of licenses //9
@@ -35,37 +35,31 @@ arrQuestions = [...arrQuestions, { //add license
     name: '9'
 }]
 
-// console.log(arrQuestions);
-// TODO: Create a function to write README file
-
+// * function to create file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, err => {
-        if (err) {
-            console.error(err)
-            return
+        err ? console.error(err) : console.log("Markup success!")
         }
-    })
+    )
 }
 
-// TODO: Create a function to initialize app
+// *init function for developer to use to create readme file
 function init() {
     inquirer
     .prompt(
-        arrQuestions
+        arrQuestions //prompt questions
     )
     .then ((response) => {
-        const {0:title, 1:subtitle, 2:descr, 3:repoLink, 4:deployLink, 5:instructions, 6:contributions, 7:tests, 8:questions, 9:license} = response;
-        console.log('license answer', license);
-        const licenseBadge = genMD.generateMarkdown(license)
-        console.log(licenseBadge);
-        fileName = `${title}_README.md`;
+        const {0:title, 1:subtitle, 2:descr, 3:repoLink, 4:deployLink, 5:instructions, 6:contributions, 7:tests, 8:questions, 9:license} = response; //object destructuring
+        const licenseBadge = genMD.generateMarkdown(license) //create license const
+        fileName = `${title}_README.md`; //create filename
         // * Template for README
         templateReadMe = `
 ${licenseBadge}
 # ${title}
 ${subtitle}
 
-##Table of contents
+## Table of contents
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -80,7 +74,7 @@ ${descr}
 
 ## Installation
 
-[Github Link](https://www.github.com/${repoLink})
+[Github Link](https://www.github.com/${repoLink}) \n
 [Deployed Website Link](${deployLink})
 
 ## Usage
@@ -89,7 +83,7 @@ ${instructions}
 
 ## License
 
-This application is licensed under ${license}.
+This application is licensed under ${license}.  Click the badge above to read the documentation.
 
 ## Contributors
 
@@ -102,10 +96,9 @@ ${tests}
 ## Questions
 Have a question? Please email me at ${questions}
 `
-        console.log(templateReadMe)
-        // writeToFile(fileName, templateReadMe)
+        writeToFile(fileName, templateReadMe)
     })
 }
 
-// Function call to initialize app
+// * Function call to initialize app
 init();

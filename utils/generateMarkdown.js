@@ -76,7 +76,7 @@ function renderLicenseLink(license) {
     case 'SIL':
       return '(https://opensource.org/licenses/OFL-1.1)';
     case 'Unlicense':
-      return 'http://unlicense.org/)';
+      return '(http://unlicense.org/)';
     case 'WTFPL':
       return '(http://www.wtfpl.net/about/)';
     case 'Zlib':
