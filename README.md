@@ -28,6 +28,8 @@ By answering questions based on the title, description, usage, links to github, 
 
 Download the files, install recommended npm module inquirer.  In a terminal, run index.js.
 
+For a video walkthrough, see [streamable](https://streamable.com/w1duii).
+
 ## License
 
 This application is licensed under WTFPL.  Click the badge above to read the documentation.
