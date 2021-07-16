@@ -50,52 +50,9 @@ function init() {
         arrQuestions //prompt questions
     )
     .then ((response) => {
-        const {0:title, 1:subtitle, 2:descr, 3:repoLink, 4:deployLink, 5:instructions, 6:contributions, 7:tests, 8:questions, 9:license} = response; //object destructuring
-        const licenseBadge = genMD.generateMarkdown(license) //create license const
+        const {0:title} = response; //object destructuring
+        const templateReadMe = genMD.generateMarkdown(response) //create license const
         fileName = `${title}_README.md`; //create filename
-        // * Template for README
-        templateReadMe = `
-${licenseBadge}
-# ${title}
-${subtitle}
-
-## Table of contents
-* [Description](#description)
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributors](#contributors)
-* [Tests](#tests)
-* [Questions](#questions)
-
-## Description
-
-${descr}
-
-## Installation
-
-[Github Link](https://www.github.com/${repoLink}) \n
-[Deployed Website Link](${deployLink})
-
-## Usage
-
-${instructions}
-
-## License
-
-This application is licensed under ${license}.  Click the badge above to read the documentation.
-
-## Contributors
-
-${contributions}
-
-## Tests
-
-${tests}
-
-## Questions
-Have a question? Please email me at ${questions}
-`
         writeToFile(fileName, templateReadMe)
     })
 }

@@ -93,20 +93,58 @@ function renderLicenseSection(license) {
   if (!license) {
     return ''
   }
-  let badge = renderLicenseBadge(license); //badge
-  let link = renderLicenseLink(license); //link
-  return badge.concat(link); // returns [!][url to a badge](url to license link)
+  const badge = renderLicenseBadge(license); //badge
+  const link = renderLicenseLink(license); //link
+  return [badge, link]; // returns [!][url to a badge](url to license link)
 }
 
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const title = renderLicenseSection(data);
-  return `# ${title}
-
-`;
+  const {0:title, 1:subtitle, 2:descr, 3:repoLink, 4:deployLink, 5:instructions, 6:contributions, 7:tests, 8:questions, 9:license} = data;
+  const licenseTitle = renderLicenseSection(license);
+  return `
+  ${licenseTitle[0]}
+  # ${title}
+  ${subtitle}
+  
+  ## Table of contents
+  * [Description](#description)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributors](#contributors)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  
+  ## Description
+  
+  ${descr}
+  
+  ## Installation
+  
+  [Github Link](https://www.github.com/${repoLink}) \n
+  [Deployed Website Link](${deployLink})
+  
+  ## Usage
+  
+  ${instructions}
+  
+  ## License
+  
+  This application is licensed under [${license}](${licenseTitle[1]}).
+  
+  ## Contributors
+  
+  ${contributions}
+  
+  ## Tests
+  
+  ${tests}
+  
+  ## Questions
+  Have a question? Please email me at ${questions}
+  `;
 }
 
-
-// console.log(generateMarkdown('Apache'))
 module.exports = {generateMarkdown}
