@@ -4,14 +4,16 @@ const inquirer = require('inquirer');
 const genMD = require('./utils/generateMarkdown.js');
 // TODO: Create an array of questions for user input
 const questions = [
-    'What is the name of the app?',
-    'Give a one line description of the app.',
-    'In a few sentences, tell the user what the app does.',
-    'What is the link to the repository?',
-    'What is the link to the deployed website?',
-    'How would you instruct the user to use this application?',
-    'How many sources would you like to credit?',
+    'What is the name of the app?', //0
+    'Give a one line description of the app.', //1
+    'In a few sentences, tell the user what the app does.', //2
+    'What is the link to the repository?', //3
+    'What is the link to the deployed website?', //4
+    'How would you instruct the user to use this application?', //5
+    'How many sources would you like to credit?', //6
 ];
+
+const licenses = ['Apache', 'Boost', 'BSD', 'Creative Commons', 'Eclipse', 'GNU', 'IBM', 'ISC', 'MIT', 'Mozilla', 'Open Data Commons', 'Perl', 'SIL', 'Unlicense', 'WTFPL', 'Zlib']
 
 let arrQuestions 
 for (let i = 0; i<questions.length; i++) {
@@ -31,6 +33,13 @@ for (let i = 0; i<questions.length; i++) {
         arrQuestions = [...arrQuestions, obj]
     }
 }
+
+arrQuestions = [...arrQuestions, { //add license
+    type: 'choices',
+    message: 'Choose a license',
+    choices: licenses,
+    name: '7'
+}]
 
 // TODO: Create a function to write README file
 
