@@ -101,10 +101,12 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  data.title = renderLicenseSection(data);
-  return `# ${data.title}
+  const title = renderLicenseSection(data);
+  return `# ${title}
 
 `;
 }
 
-module.exports = generateMarkdown;
+
+// console.log(generateMarkdown('Apache'))
+module.exports = {generateMarkdown}
